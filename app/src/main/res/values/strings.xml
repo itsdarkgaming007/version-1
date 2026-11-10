@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickSender Pro</string>
+    <string name="service_label">QuickSender Auto Send Service</string>
+    <string name="empty_groups">இன்னும் எந்த குரூப்பும் உருவாக்கப்படவில்லை.\nகீழே உள்ள + பட்டனை கிளிக் செய்து குரூப் உருவாக்குங்கள்.</string>
+</resources>
