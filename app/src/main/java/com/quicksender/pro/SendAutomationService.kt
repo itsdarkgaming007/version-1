@@ -3,6 +3,7 @@ package com.quicksender.pro
 import android.accessibilityservice.AccessibilityService
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
+import kotlin.random.Random
 
 class SendAutomationService : AccessibilityService() {
 
@@ -11,14 +12,12 @@ class SendAutomationService : AccessibilityService() {
         val pkg = root.packageName?.toString() ?: return
 
         if (pkg == "com.whatsapp" || pkg == "com.whatsapp.w4b") {
-            // 1. Auto click Send
             val send = findSendButton(root, pkg)
             if (send != null) {
                 clickNode(send)
                 return
             }
 
-            // 2. Dismiss invalid dialogs
             val ok = findOkButton(root)
             if (ok != null) {
                 clickNode(ok)
