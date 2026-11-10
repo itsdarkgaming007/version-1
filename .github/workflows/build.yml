@@ -24,15 +24,16 @@ jobs:
           gradle-version: '8.2.1'
           cache-disabled: true
 
-      - name: Generate Wrapper and Build APK
+      - name: Create Keystore & Build Release APK
         run: |
+          keytool -genkeypair -v -keystore app/release.keystore -alias quicksender -keyalg RSA -keysize 2048 -validity 10000 -storepass "QuickPass123" -keypass "QuickPass123" -dname "CN=QuickSender, OU=Production, O=QuickSender, L=Chennai, ST=TN, C=IN"
           gradle wrapper --gradle-version 8.2.1 --distribution-type bin --no-daemon
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --stacktrace
+          ./gradlew assembleRelease --no-daemon --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: QuickSender-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
