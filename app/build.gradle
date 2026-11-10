@@ -8,16 +8,20 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.quicksender.pro"
+        applicationId "com.quicksender.pro.release"
         minSdk 24
         targetSdk 33
-        versionCode 1
+        versionCode 2
         versionName "2.0.0"
     }
 
     buildTypes {
         debug {
             debuggable true
+            minifyEnabled false
+            // Ensures full v1 and v2 signing schemes are active
+            v1SigningEnabled true
+            v2SigningEnabled true
         }
         release {
             minifyEnabled false
